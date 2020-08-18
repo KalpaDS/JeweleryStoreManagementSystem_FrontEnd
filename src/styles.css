@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url(~bootstrap/dist/css/bootstrap.min.css);
+
+/*.mod-form {*/
+/*}*/
+/*.mod-form  input[type=text], .custom-select, textarea {*/
+/*  color: #495057 !important;*/
+/*  background-color: #ECEFF0 !important;*/
+/*  border: 2px solid #DCDFDF !important;*/
+/*  font-size: 14px;*/
+/*}*/
+
+/*.mod-form input[type=text]:focus, .mod-form textarea:focus{*/
+/*  background-color: white !important;*/
+/*}*/
+
+/*.mod-form label {*/
+/*  color: #888888;*/
+/*  font-weight: 600;*/
+/*  font-size: 14px;*/
+/*}*/
