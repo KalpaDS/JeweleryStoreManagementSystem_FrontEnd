@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title">Add New Jewelry Maker</h4>
+          <p class="card-category">* can add new jewelry makers to system</p>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="makersData.jewMName" matInput name="jewMName" placeholder="Jewelry Maker Name"
+                         type="text">
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="makersData.contactNo" matInput name="contactNo" placeholder="Contact Number"
+                         type="number">
+                </mat-form-field>
+              </div>
+            </div>
+            <button (click)="saveMakers()" class="btn btn-danger pull-right" mat-raised-button type="submit">Save
+              Jewelry Maker
+            </button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title ">Jewelry Makers Table</h4>
+          <p class="card-category">* can delete jewelry makers using this table</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <th>Jewelry Maker ID</th>
+              <th>Jewelry Maker Name</th>
+              <th>Contact Number</th>
+              <th>Action</th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let maker of makers">
+                <td>{{maker.jewMId}}</td>
+                <td>{{maker.jewMName}}</td>
+                <td>{{maker.contactNo}}</td>
+                <td>
+                  <button (click)="deleteMakers(maker.jewMId)" class="btn btn-danger" mat-mini-fab>
+                    <i class="material-icons">delete</i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

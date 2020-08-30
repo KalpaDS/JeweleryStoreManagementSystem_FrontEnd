@@ -1,0 +1,127 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title">Add New Metal</h4>
+          <p class="card-category">* can add new metal type with cart and weight to system</p>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="metalData.metalType" matInput name="metalType" placeholder="Metal Type"
+                         type="text">
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="metalData.carat" matInput name="carat" placeholder="Carat" type="number">
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="metalData.weight" matInput name="weight" placeholder="Weight" type="number">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="metalData.addedDate" [matDatepicker]="picker" matInput name="addedDate"
+                         placeholder="Choose a date">
+                  <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+                  <mat-datepicker #picker touchUi></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <button (click)="saveMetal()" class="btn btn-danger pull-right" mat-raised-button type="submit">Save Metal
+            </button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="editCardVisible" class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title">Update Metal</h4>
+          <p class="card-category">* can add new metal weight for exiting metals</p>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Metal Type" readonly type="text" value="{{selectedMetalType}}">
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Carat" readonly type="text" value="{{selectedMetalCarat}}">
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="updateMetalData.updatedWeight" matInput name="updatedWeight"
+                         placeholder="Add New Weight"
+                         type="number">
+                  <mat-hint>Max weight {{selectedMetalWeight}}</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <button (click)="saveEditedMetal()" class="btn btn-danger pull-right" mat-raised-button type="submit">Update
+            </button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title ">Metal Table</h4>
+          <p class="card-category">* can delete metal using this table</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <th>Metal ID</th>
+              <th>Metal Type</th>
+              <th>Carat</th>
+              <th>Weight</th>
+              <th>Added Date</th>
+              <th>Action</th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let metal of metals">
+                <td>{{metal.metalId}}</td>
+                <td>{{metal.metalType}}</td>
+                <td>{{metal.carat}}</td>
+                <td>{{metal.weight}}</td>
+                <td>{{metal.addedDate | date}}</td>
+                <td>
+                  <button (click)="deleteMetal(metal.metalId)" class="btn btn-danger" mat-mini-fab>
+                    <i class="material-icons">delete</i>
+                  </button>
+
+                  <button (click)="editMetal(metal)" class="btn btn-danger ml-2"
+                          mat-mini-fab>
+                    <i class="material-icons">create</i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

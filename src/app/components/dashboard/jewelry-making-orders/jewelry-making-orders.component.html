@@ -1,0 +1,108 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title">Place Jewelry Making Order</h4>
+          <p class="card-category">* can place jewelry making order for jewelry maker with adding metal and gem</p>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field>
+                  <mat-label>Select Metal</mat-label>
+                  <mat-select [(ngModel)]="metalData.metalId" name="metalId">
+                    <mat-option (click)="setSelectedMetalWeight(metal.weight)" *ngFor="let metal of metals"
+                                [value]="metal.metalId">
+                      {{metal.metalType}} (carat {{metal.carat}})
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="jewelryMakingOrderData.givenMetalWeight" matInput name="givenMetalWeight"
+                         placeholder="Weight"
+                         type="number">
+                  <mat-hint *ngIf="selectedMetalWeight != null">Max Weight {{selectedMetalWeight}}</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field>
+                  <mat-label>Select Gem</mat-label>
+                  <mat-select [(ngModel)]="gemData.gemId" name="gemId">
+                    <mat-option *ngFor="let gem of gems" [value]="gem.gemId">
+                      {{gem.gemType}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field>
+                  <mat-label>Select Jewelry Maker</mat-label>
+                  <mat-select [(ngModel)]="makersData.jewMId" name="jewMId">
+                    <mat-option *ngFor="let maker of makers" [value]="maker.jewMId">
+                      {{maker.jewMName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <input [(ngModel)]="jewelryMakingOrderData.givenDate" [matDatepicker]="picker" matInput
+                         name="addedDate"
+                         placeholder="Choose a date">
+                  <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+                  <mat-datepicker #picker touchUi></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <button (click)="placeOrder()" class="btn btn-danger pull-right" mat-raised-button type="submit">Save
+              Order
+            </button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title ">Orders Table</h4>
+          <p class="card-category">* can view recently placed orders</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+              <th>Order ID</th>
+              <th>Gem</th>
+              <th>Metal</th>
+              <th>Given Metal Weight</th>
+              <th>Jewelry Maker</th>
+              <th>Given Date</th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let order of orders">
+                <td>{{order.jewMDId}}</td>
+                <td>{{order.gem?.gemType}}</td>
+                <td>{{order.metal?.metalType}}</td>
+                <td>{{order.givenMetalWeight}}</td>
+                <td>{{order.jewelryMaker?.jewMName}}</td>
+                <td>{{order.givenDate | date}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

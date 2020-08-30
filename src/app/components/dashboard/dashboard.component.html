@@ -1,5 +1,77 @@
-<mat-drawer-container>
-  <mat-drawer-content>
-    <router-outlet></router-outlet>
-  </mat-drawer-content>
-</mat-drawer-container>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header card-header-warning card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">create_new_folder</i>
+          </div>
+          <p class="card-category">Orders</p>
+          <h3 class="card-title">{{orderCount}}
+            <small> / total</small>
+          </h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">update</i> {{loadedDate | date:'HH:mm:ss'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header card-header-success card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">star</i>
+          </div>
+          <p class="card-category">Gems</p>
+          <h3 class="card-title">{{gemCount}}
+            <small> / total</small>
+          </h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">update</i> {{loadedDate | date:'HH:mm:ss'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header card-header-danger card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">kitchen</i>
+          </div>
+          <p class="card-category">Metals</p>
+          <h3 class="card-title">{{metalCount}}
+            <small> / grams</small>
+          </h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">update</i> {{loadedDate | date:'HH:mm:ss'}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header card-header-info card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">person</i>
+          </div>
+          <p class="card-category">Jewelry Makers</p>
+          <h3 class="card-title">{{makersCount}}
+            <small> / makers</small>
+          </h3>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="material-icons">update</i> {{loadedDate | date:'HH:mm:ss'}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
